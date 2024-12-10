@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Character Profiles</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+  <aside class="sidebar">
+    <h1>Characters</h1>
+    <ul id="characterList"></ul>
+    <div class="controls">
+      <button id="saveBtn">Save Character</button>
+      <button id="newCharacterBtn">New Character</button>
+      <button id="deleteCharacterBtn">Delete Selected</button>
+    </div>
+    <div class="import-export">
+      <h2>Import / Export</h2>
+      <button id="exportBtn">Export All to JSON</button>
+      <input type="file" id="importFile" accept=".json" />
+    </div>
+  </aside>
+
+  <main class="form-section">
+    <!-- Basic Information -->
+    <fieldset>
+      <legend>Basic Information</legend>
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" />
+
+      <label for="age">Age & Date of Birth:</label>
+      <input type="text" id="age" placeholder="e.g., 30, born 1990-01-01" />
+
+      <label for="birthPlace">Place of Birth:</label>
+      <input type="text" id="birthPlace" />
+
+      <label for="currentResidence">Current Residence:</label>
+      <input type="text" id="currentResidence" />
+    </fieldset>
+
+    <!-- Physical Appearance -->
+    <fieldset>
+      <legend>Physical Appearance</legend>
+      <label for="height">Height & Build (metric):</label>
+      <input type="text" id="height" placeholder="e.g., 1.78m, athletic" />
+
+      <label for="weight">Weight & Body Composition (kg):</label>
+      <input type="text" id="weight" placeholder="e.g., 70 kg, lean" />
+
+      <label for="facialFeatures">Facial Features:</label>
+      <textarea id="facialFeatures"></textarea>
+
+      <label for="hair">Hair:</label>
+      <input type="text" id="hair" />
+
+      <label for="eyes">Eyes:</label>
+      <input type="text" id="eyes" />
+
+      <label for="complexion">Complexion & Skin Details:</label>
+      <textarea id="complexion"></textarea>
+
+      <label for="dress">Manner of Dress:</label>
+      <textarea id="dress"></textarea>
+
+      <label for="bodyLanguage">Body Language & Posture:</label>
+      <textarea id="bodyLanguage"></textarea>
+
+      <label for="voice">Voice:</label>
+      <textarea id="voice"></textarea>
+    </fieldset>
+
+    <!-- Background -->
+    <fieldset>
+      <legend>Background</legend>
+      <label for="family">Family Background:</label>
+      <textarea id="family"></textarea>
+
+      <label for="childhood">Childhood & Upbringing:</label>
+      <textarea id="childhood"></textarea>
+
+      <label for="education">Education & Training:</label>
+      <textarea id="education"></textarea>
+
+      <label for="occupation">Career & Occupation:</label>
+      <textarea id="occupation"></textarea>
+
+      <label for="significantEvents">Significant Life Events:</label>
+      <textarea id="significantEvents"></textarea>
+
+      <label for="culture">Cultural & Ethnic Identity:</label>
+      <textarea id="culture"></textarea>
+
+      <label for="languagesSpoken">Languages Spoken:</label>
+      <input type="text" id="languagesSpoken" placeholder="e.g., English, French" />
+    </fieldset>
+
+    <!-- Psychological Profile -->
+    <fieldset>
+      <legend>Psychological Profile</legend>
+      <label for="personality">Personality Traits:</label>
+      <textarea id="personality"></textarea>
+
+      <label for="values">Core Values & Morals:</label>
+      <textarea id="values"></textarea>
+
+      <label for="fears">Fears & Insecurities:</label>
+      <textarea id="fears"></textarea>
+
+      <label for="motivations">Motivations & Goals:</label>
+      <textarea id="motivations"></textarea>
+
+      <label for="strengths">Strengths & Weaknesses:</label>
+      <textarea id="strengths"></textarea>
+
+      <label for="hobbies">Hobbies & Interests:</label>
+      <textarea id="hobbies"></textarea>
+
+      <label for="habits">Habits & Rituals:</label>
+      <textarea id="habits"></textarea>
+
+      <label for="emotionalProfile">Emotional Profile:</label>
+      <textarea id="emotionalProfile"></textarea>
+
+      <label for="mentalHealth">Mental Health:</label>
+      <textarea id="mentalHealth"></textarea>
+
+      <label for="beliefs">Philosophical / Spiritual Beliefs:</label>
+      <textarea id="beliefs"></textarea>
+    </fieldset>
+
+    <!-- Relationships -->
+    <fieldset>
+      <legend>Relationships & Social Dynamics</legend>
+      <label for="romanticLife">Romantic Life:</label>
+      <textarea id="romanticLife"></textarea>
+
+      <label for="friends">Close Friends & Allies:</label>
+      <textarea id="friends"></textarea>
+
+      <label for="rivals">Rivals & Enemies:</label>
+      <textarea id="rivals"></textarea>
+
+      <label for="socialCircle">Social Circle & Community:</label>
+      <textarea id="socialCircle"></textarea>
+
+      <label for="reputation">Reputation & Public Image:</label>
+      <textarea id="reputation"></textarea>
+
+      <label for="communicationStyle">Interpersonal Communication Style:</label>
+      <textarea id="communicationStyle"></textarea>
+    </fieldset>
+
+    <!-- Conflict & Internal Struggle -->
+    <fieldset>
+      <legend>Conflict & Internal Struggle</legend>
+      <label for="internalConflicts">Internal Conflicts:</label>
+      <textarea id="internalConflicts"></textarea>
+
+      <label for="externalConflicts">External Conflicts:</label>
+      <textarea id="externalConflicts"></textarea>
+
+      <label for="pastMistakes">Past Mistakes & Regrets:</label>
+      <textarea id="pastMistakes"></textarea>
+
+      <label for="hiddenAgendas">Secret Desires & Hidden Agendas:</label>
+      <textarea id="hiddenAgendas"></textarea>
+    </fieldset>
+
+    <!-- Skills & Abilities -->
+    <fieldset>
+      <legend>Skills & Abilities</legend>
+      <label for="talents">Talents & Skills:</label>
+      <textarea id="talents"></textarea>
+
+      <label for="extraLanguages">Additional Languages & Literacies:</label>
+      <textarea id="extraLanguages"></textarea>
+
+      <label for="supernatural">Magical or Supernatural Abilities (If Applicable):</label>
+      <textarea id="supernatural"></textarea>
+
+      <label for="weapons">Weapons & Tools (If Applicable):</label>
+      <textarea id="weapons"></textarea>
+    </fieldset>
+
+    <!-- Material & Financial Aspects -->
+    <fieldset>
+      <legend>Material & Financial Aspects</legend>
+      <label for="financial">Financial Status:</label>
+      <textarea id="financial"></textarea>
+
+      <label for="possessions">Important Possessions:</label>
+      <textarea id="possessions"></textarea>
+
+      <label for="transportation">Transportation:</label>
+      <textarea id="transportation"></textarea>
+    </fieldset>
+
+    <!-- Lifestyle & Environment -->
+    <fieldset>
+      <legend>Lifestyle & Environment</legend>
+      <label for="dailyRoutine">Typical Daily Routine:</label>
+      <textarea id="dailyRoutine"></textarea>
+
+      <label for="diet">Diet & Culinary Preferences:</label>
+      <textarea id="diet"></textarea>
+
+      <label for="physicalHealth">Physical Health & Wellness:</label>
+      <textarea id="physicalHealth"></textarea>
+    </fieldset>
+
+    <!-- Story Context -->
+    <fieldset>
+      <legend>Contextual & Story-Specific</legend>
+      <label for="storyRole">Role in the Story:</label>
+      <textarea id="storyRole"></textarea>
+
+      <label for="characterArc">Character Arc Projection:</label>
+      <textarea id="characterArc"></textarea>
+
+      <label for="plotConflicts">Conflicts Tied to Plot:</label>
+      <textarea id="plotConflicts"></textarea>
+
+      <label for="themes">Thematic Significance:</label>
+      <textarea id="themes"></textarea>
+    </fieldset>
+
+    <!-- Extras -->
+    <fieldset>
+      <legend>Extras & Unique Flourishes</legend>
+      <label for="mannerisms">Memorable Mannerisms:</label>
+      <textarea id="mannerisms"></textarea>
+
+      <label for="spiritualAffiliations">Spiritual or Supernatural Affiliations:</label>
+      <textarea id="spiritualAffiliations"></textarea>
+
+      <label for="symbolism">Symbolic Representations:</label>
+      <textarea id="symbolism"></textarea>
+
+      <label for="accomplishments">Accomplishments & Achievements:</label>
+      <textarea id="accomplishments"></textarea>
+
+      <label for="failures">Failures & Lessons Learned:</label>
+      <textarea id="failures"></textarea>
+
+      <label for="legacy">Legacy & Future Aspirations:</label>
+      <textarea id="legacy"></textarea>
+    </fieldset>
+  </main>
+
+  <!-- Draggable Resizer -->
+  <div class="resizer" id="resizer"></div>
+
+  <aside class="summary-panel">
+    <h2>Summary</h2>
+    <div id="summaryContent"></div>
+  </aside>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
