@@ -40,7 +40,8 @@ body {
   }
   
   .sidebar ul li.selected {
-    background: #555;
+    background: #777;
+    border: 2px solid black
   }
   
   .controls,
@@ -137,3 +138,13 @@ body {
     color: #bbb;
   }
   
+  #copySummaryBtn {
+    background: #444;
+    border: 1px solid #666;
+    color: #eee;
+    padding: 0.5em;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }

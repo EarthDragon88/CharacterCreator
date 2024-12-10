@@ -28,13 +28,33 @@ const summaryContent = document.getElementById('summaryContent');
 const container = document.querySelector('.container');
 const resizer = document.getElementById('resizer');
 
+let isDirty = false; // Track if form changed since last save or load.
+
+const copySummaryBtn = document.getElementById('copySummaryBtn');
+
+copySummaryBtn.addEventListener('click', () => {
+  const textToCopy = summaryContent.innerText; 
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    alert('Summary copied to clipboard!');
+  });
+});
+
+function markDirty() {
+  isDirty = true;
+}
+
+fields.forEach(f => {
+  const el = document.getElementById(f);
+  el.addEventListener('input', markDirty);
+});
+
 // Build a dictionary of field labels from the HTML labels
 const fieldLabels = {};
 fields.forEach(f => {
     const labelEl = document.querySelector(`label[for="${f}"]`);
     if (labelEl) {
         // Remove trailing colon if present
-        let labelText = labelEl.textContent.trim().replace(/:\s*$/, '');
+        let labelText = labelEl.textContent.trim().replace(/:`\s*$/, '');
         fieldLabels[f] = labelText;
     } else {
         // Fallback if no label found
@@ -82,12 +102,13 @@ function loadCharacter(charKey) {
     const charData = characters[charKey];
     if (!charData) return;
     fields.forEach(f => {
-        const el = document.getElementById(f);
-        el.value = charData[f] || '';
-        autoResizeTextarea(el);
+      const el = document.getElementById(f);
+      el.value = charData[f] || '';
+      autoResizeTextarea(el);
     });
+    isDirty = false; // loaded from saved data, no unsaved changes yet
     updateSummary();
-}
+  }
 
 // Get form data
 function getFormData() {
@@ -101,11 +122,15 @@ function getFormData() {
 
 // Create a new character mode
 newCharacterBtn.addEventListener('click', () => {
+    if (isDirty && !confirm('You have unsaved changes. Discard them?')) {
+      return;
+    }
     selectedCharacterKey = null;
     clearForm();
+    isDirty = false;
     updateListSelection();
     updateSummary();
-});
+  });
 
 // Save character
 saveBtn.addEventListener('click', () => {
@@ -121,6 +146,7 @@ saveBtn.addEventListener('click', () => {
     populateCharacterList();
     updateListSelection();
     updateSummary();
+    isDirty = false;
     alert('Character saved successfully!');
 });
 
@@ -145,11 +171,14 @@ deleteCharacterBtn.addEventListener('click', () => {
 // Click on character in list
 characterList.addEventListener('click', (e) => {
     if (e.target.tagName.toLowerCase() === 'li') {
-        selectedCharacterKey = e.target.dataset.key;
-        loadCharacter(selectedCharacterKey);
-        updateListSelection();
+      if (isDirty && !confirm('You have unsaved changes. Discard them?')) {
+        return;
+      }
+      selectedCharacterKey = e.target.dataset.key;
+      loadCharacter(selectedCharacterKey);
+      updateListSelection();
     }
-});
+  });
 
 // Update the selected style in the list
 function updateListSelection() {
